@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Connect Nigeria First Project (CNFP)",
+  "description": "A credible national platform dedicated to documenting, preserving, and showcasing Nigeria’s development story, reforms, and institutional excellence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

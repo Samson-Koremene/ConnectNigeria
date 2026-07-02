@@ -1,0 +1,116 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Global Helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Admin Helper
+    function isAdmin() {
+      return isSignedIn() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.get('isAdmin', false) == true;
+    }
+
+    // User Profile Rules
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'createdAt', 'updatedAt']) &&
+             data.keys().size() <= 10 &&
+             data.uid is string &&
+             data.email is string &&
+             data.createdAt is timestamp &&
+             data.updatedAt is timestamp &&
+             (data.get('notificationsEnabled', true) is bool) &&
+             (data.get('newsletterSubscribed', true) is bool) &&
+             (data.get('isAdmin', false) is bool);
+    }
+
+    match /users/{userId} {
+      allow get: if isOwner(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if isOwner(userId) && isValidUser(incoming()) && incoming().createdAt == request.time && incoming().updatedAt == request.time && incoming().get('isAdmin', false) == false;
+      allow update: if isOwner(userId) && 
+                      isValidUser(incoming()) && 
+                      incoming().uid == existing().uid &&
+                      incoming().email == existing().email &&
+                      incoming().createdAt == existing().createdAt &&
+                      incoming().updatedAt == request.time &&
+                      incoming().diff(existing()).affectedKeys().hasAny(['notificationsEnabled', 'newsletterSubscribed', 'displayName', 'photoURL', 'updatedAt']) ||
+                      (isAdmin() && incoming().diff(existing()).affectedKeys().hasAny(['isAdmin', 'updatedAt']));
+    }
+
+    // Saved Projects Rules
+    function isValidSavedProject(data) {
+      return data.keys().hasAll(['projectId', 'projectTitle', 'savedAt']) &&
+             data.keys().size() == 3 &&
+             data.projectId is string &&
+             data.projectTitle is string &&
+             data.savedAt == request.time;
+    }
+
+    match /users/{userId}/savedProjects/{projectId} {
+      allow get, list, delete: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidSavedProject(incoming());
+    }
+
+    // Projects Collection Rules
+    match /projects/{projectId} {
+      allow read: if true; // Public read access
+      allow create, update, delete: if isAdmin();
+    }
+
+    // News Collection Rules
+    match /news/{newsId} {
+      allow read: if true; // Public read access
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Partners Collection Rules
+    match /partners/{partnerId} {
+      allow read: if true; // Public read access
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Stakeholders Collection Rules
+    match /stakeholders/{stakeholderId} {
+      allow read: if true; // Public read access
+      allow create, update, delete: if isAdmin();
+    }
+
+    // System Collection Rules (for dashboard metrics, etc.)
+    match /system/{document} {
+      allow read: if true; // Public read access
+      allow write: if isAdmin();
+    }
+  }
+}
+
+    match /users/{userId}/savedProjects/{projectId} {
+      allow list: if isOwner(userId);
+      allow get: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidSavedProject(incoming());
+      allow delete: if isOwner(userId);
+    }
+  }
+}
