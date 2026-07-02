@@ -29,8 +29,8 @@ export default function News() {
   ];
 
   return (
-    <section id="news" className="py-24 bg-[#F8FAF9]/50">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="news" className="py-16 lg:py-24 bg-[#F8FAF9]/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div>
             <h2 className="text-[#008751] font-bold uppercase tracking-[0.3em] text-xs mb-4">Insights & Updates</h2>
@@ -42,7 +42,7 @@ export default function News() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article, idx) => (
             <motion.div
               key={idx}
@@ -52,14 +52,14 @@ export default function News() {
               transition={{ delay: idx * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="relative h-64 mb-6 overflow-hidden rounded-3xl shadow-sm border border-slate-100">
+              <div className="relative h-64 mb-6 overflow-hidden rounded-2xl shadow-sm border border-slate-100">
                 <img 
                   src={article.image} 
                   alt={article.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-white/90 backdrop-blur-md rounded-lg text-[10px] font-bold text-[#008751] uppercase tracking-widest">
+                  <span className="px-3 py-1 bg-white/90 backdrop-blur-md rounded-xl text-[10px] font-bold text-[#008751] uppercase tracking-widest">
                     {article.tag}
                   </span>
                 </div>

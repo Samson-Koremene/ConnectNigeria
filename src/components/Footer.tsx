@@ -12,9 +12,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1A2E26] text-white pt-20 pb-10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16">
+    <footer className="bg-[#1A2E26] text-white pt-16 lg:pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 lg:mb-16">
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               <img src={logo} alt="Connect Nigeria First Project Logo" className="w-12 h-12 md:w-16 md:h-16 object-contain" referrerPolicy="no-referrer" />
@@ -28,7 +28,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               {[Twitter, Linkedin, Facebook, Instagram].map((Icon, idx) => (
-                <a key={idx} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#008751] hover:text-white transition-all">
+                <a key={idx} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#008751] hover:text-white transition-all duration-300">
                   <Icon size={18} />
                 </a>
               ))}

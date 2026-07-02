@@ -18,20 +18,20 @@ export default function About() {
       title: 'Vision', 
       desc: 'To be the most trusted global platform for showcasing Nigeria’s journey toward sustainable institutional excellence.',
       icon: Eye,
-      color: 'bg-blue-50 text-blue-600'
+      color: 'bg-emerald-50 text-[#008751]'
     },
     { 
       title: 'Core Values', 
       desc: 'Transparency, Integrity, National Pride, and Accountability in every story we tell and every project we document.',
       icon: Shield,
-      color: 'bg-amber-50 text-amber-600'
+      color: 'bg-emerald-50 text-[#008751]'
     }
   ];
 
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-16 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -69,10 +69,10 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all group bg-white"
+                className="p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group bg-white"
               >
                 <div className="flex items-start space-x-6">
-                  <div className={`p-4 rounded-2xl transition-transform group-hover:scale-110 ${item.color}`}>
+                  <div className={`p-4 rounded-xl transition-transform duration-300 group-hover:scale-110 ${item.color}`}>
                     <item.icon size={28} />
                   </div>
                   <div>

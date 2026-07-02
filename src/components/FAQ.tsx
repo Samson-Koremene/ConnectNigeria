@@ -48,7 +48,7 @@ function FAQItem({ question, answer, isOpen, onClick }: FAQItemProps) {
         <span className={`text-sm md:text-base font-bold transition-colors ${isOpen ? 'text-[#008751]' : 'text-[#1A2E26] group-hover:text-[#008751]'}`}>
           {question}
         </span>
-        <div className={`flex-shrink-0 ml-4 p-1 rounded-full transition-all ${isOpen ? 'bg-[#008751] text-white' : 'bg-emerald-50 text-[#008751]'}`}>
+        <div className={`flex-shrink-0 ml-4 p-1 rounded-full transition-all duration-300 ${isOpen ? 'bg-[#008751] text-white' : 'bg-emerald-50 text-[#008751]'}`}>
           {isOpen ? <Minus size={16} /> : <Plus size={16} />}
         </div>
       </button>
@@ -75,9 +75,9 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 bg-white border-t border-slate-100">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
+    <section id="faq" className="py-16 lg:py-24 bg-white border-t border-slate-100">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 lg:mb-16">
           <div className="flex items-center justify-center space-x-2 text-[#008751] mb-4">
             <HelpCircle size={20} />
             <span className="text-xs font-bold uppercase tracking-[0.3em]">Knowledge Base</span>
@@ -90,7 +90,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl p-2">
+        <div className="bg-white rounded-2xl p-2">
           {faqs.map((faq, index) => (
             <FAQItem
               key={index}

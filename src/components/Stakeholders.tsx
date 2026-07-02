@@ -24,9 +24,9 @@ export default function Stakeholders() {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+    <section className="py-16 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-[#008751] font-bold uppercase tracking-[0.3em] text-xs mb-4">Our Ecosystem</h2>
           <h3 className="text-4xl font-extrabold text-[#1A2E26] mb-6">Key Stakeholders</h3>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
@@ -34,7 +34,7 @@ export default function Stakeholders() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {groups.map((group, idx) => (
             <motion.div
               key={group.name}
@@ -43,9 +43,9 @@ export default function Stakeholders() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ y: -8 }}
-              className="p-8 rounded-3xl border border-slate-100 bg-[#F8FAF9]/30 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all group"
+              className="p-6 rounded-2xl border border-slate-100 bg-[#F8FAF9]/30 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group"
             >
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#008751] group-hover:text-white transition-colors">
+              <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#008751] group-hover:text-white transition-colors duration-300">
                 <group.icon size={32} />
               </div>
               <h4 className="text-xl font-bold text-[#1A2E26] mb-3">{group.name}</h4>

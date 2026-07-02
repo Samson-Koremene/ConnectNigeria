@@ -55,7 +55,7 @@ export default function Repository() {
   };
 
   return (
-    <section id="repository" className="py-24 bg-[#1A2E26] text-white overflow-hidden relative">
+    <section id="repository" className="py-16 lg:py-24 bg-[#1A2E26] text-white overflow-hidden relative">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#008751] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
@@ -63,8 +63,8 @@ export default function Repository() {
         <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] text-[#008751]" fill="none" stroke="currentColor" strokeWidth="0.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -82,18 +82,18 @@ export default function Repository() {
                 <input 
                   type="text" 
                   placeholder="Search documentation..." 
-                  className="w-full pl-12 pr-4 py-4 bg-[#2A3E36]/50 border border-white/10 rounded-2xl text-emerald-50 focus:outline-none focus:ring-2 focus:ring-[#008751]/30" 
+                  className="w-full pl-12 pr-4 py-4 bg-[#2A3E36]/50 border border-white/10 rounded-xl text-emerald-50 focus:outline-none focus:ring-2 focus:ring-[#008751]/30 transition-all duration-300" 
                 />
               </div>
-              <button className="px-8 py-4 bg-[#008751] hover:bg-[#007043] text-white font-bold rounded-2xl transition-all flex items-center justify-center space-x-2 shadow-lg shadow-[#008751]/20">
+              <button className="px-8 py-4 bg-[#008751] hover:bg-[#007043] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg shadow-[#008751]/20 hover:scale-105">
                 <span>Search Repository</span>
                 <ArrowRight size={18} className="opacity-50" />
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {categories.map((cat, idx) => (
-                <div key={idx} className="p-4 bg-[#2A3E36]/40 border border-white/5 rounded-2xl">
+                <div key={idx} className="p-6 bg-[#2A3E36]/40 border border-white/5 rounded-2xl transition-all duration-300 hover:bg-[#2A3E36]/60">
                   <cat.icon size={24} className="text-[#008751] mb-3" />
                   <p className="text-xl md:text-2xl font-bold mb-1">{cat.count}</p>
                   <p className="text-[9px] md:text-[10px] text-emerald-300/40 font-bold uppercase tracking-widest">{cat.title}</p>

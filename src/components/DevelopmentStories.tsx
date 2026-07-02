@@ -66,9 +66,9 @@ export default function DevelopmentStories() {
   });
 
   return (
-    <section className="py-24 bg-white" id="stories">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+    <section className="py-16 lg:py-24 bg-white" id="stories">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 lg:mb-12 gap-6">
           <div>
             <h2 className="text-[#008751] font-bold uppercase tracking-[0.3em] text-xs mb-4">Impact in Action</h2>
             <h3 className="text-4xl font-extrabold text-[#1A2E26] leading-tight">Development Stories</h3>
@@ -80,7 +80,7 @@ export default function DevelopmentStories() {
         </div>
 
         {/* Filters UI */}
-        <div className="flex flex-col space-y-6 mb-12 p-6 bg-slate-50 rounded-3xl border border-slate-100">
+        <div className="flex flex-col space-y-6 mb-12 p-6 bg-slate-50 rounded-2xl border border-slate-100">
           <div className="flex items-center space-x-2 text-slate-400 mb-2">
             <Filter size={16} />
             <span className="text-[10px] font-bold uppercase tracking-widest">Filter Content</span>
